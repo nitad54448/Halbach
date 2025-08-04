@@ -1,35 +1,42 @@
-# Summary of "A versatile system for Hall effect measurements at high temperature"
+# HT-Halbach
 
-[cite_start]This document provides a summary and detailed analysis of the paper by Murat Gunes et al., published in *Measurement Science and Technology* (2017)[cite: 3, 4]. All information is sourced directly from the provided article.
+This program is used for the measurement of Hall effect at high temperature and it was written in 2013-2014, the version described here was updated in 2023. The method is extensively described in a paper by Murat Gunes et al., published in *Measurement Science and Technology* (2017). For more details the reader can consult that article.
 
 ---
 
 ## Overview and Principle of Operation
 
-[cite_start]The paper details the design and operation of a novel system for measuring the Hall effect in materials at elevated temperatures[cite: 3, 25]. [cite_start]The key innovation is the use of a rotating **Halbach magnet array**, which allows for fast, continuous, and versatile measurements under various conditions[cite: 26, 88].
+The system is designed to overcome common challenges in high-temperature Hall effect measurements, such as thermal gradients and thermoelectric voltages. The key point of this system, which is used in my lab nowadays, is the use of a rotating permanent NdFeB **Halbach magnet array** which allows for measurements under various conditions. For this setup, we employ a lab-made furnace inserted in a sample holder maintained under vacuum, heated internally, and inserted in "donut" of the magnet. Our setup has holder of 28 mm diameter; obviously larger bores will be more comfortable to work with but will be more much expensive.
 
-[cite_start]The system is designed to overcome common challenges in high-temperature Hall effect measurements, such as thermal gradients and thermoelectric voltages (Seebeck effect)[cite: 34]. [cite_start]The core of the setup is a donut-shaped Halbach magnet that produces a strong (1 T) and homogeneous magnetic field[cite: 85]. [cite_start]This magnet is mounted on a motorized stage, allowing it to be rotated at controlled speeds (up to ~2 Hz) or fixed at specific angles[cite: 90]. [cite_start]This rotation enables the application of either a DC or an AC magnetic field to the sample[cite: 169].
+This magnet is mounted on a motorized stage (Owis Gmbh), allowing it to be rotated at controlled speeds (up to ~2 Hz) or fixed at specific angles. This rotation enables the application of either a DC or an AC magnetic field to the sample. The sample is mounted on a holder that can be heated up to 773 K and is placed within the magnet's bore. The system supports multiple measurement modes by combining DC or AC magnetic fields with either DC or AC electrical currents.
 
-[cite_start]The sample is mounted on a holder that can be heated up to 773 K and is placed within the magnet's bore[cite: 141, 158]. [cite_start]The system supports multiple measurement modes by combining DC or AC magnetic fields with either DC or AC electrical currents[cite: 169].
+**DC Field Mode** 
+The magnet is rotated to a series of fixed angles. The Hall voltage shows a cosine dependence on the angle between the magnetic field and the sample normal. By fitting the measured voltage against the cosine of the angle, the Hall coefficient is extracted from the slope. This method is very fast, with a full set of measurements taking few tens of seconds.
 
-* [cite_start]**DC Field Mode**: The magnet is rotated to a series of fixed angles[cite: 176]. [cite_start]The Hall voltage shows a cosine dependence on the angle between the magnetic field and the sample normal[cite: 177]. [cite_start]By plotting the measured voltage against the cosine of the angle, the Hall coefficient is extracted from the slope[cite: 177]. [cite_start]This method is very fast, with a full set of measurements taking only a few seconds[cite: 178].
-* [cite_start]**AC Field Mode**: The magnet is rotated continuously at a constant frequency[cite: 264]. [cite_start]This allows the Hall voltage to be measured with a lock-in amplifier, which is highly effective at filtering out DC offsets and noise[cite: 61, 286]. [cite_start]This can be done with either a DC current or a dual-AC method (AC current and AC field) for maximum noise rejection[cite: 263, 283].
-
-[cite_start]The system's ability to perform measurements in seconds allows for the continuous monitoring of material properties during a thermal ramp, a significant advantage over traditional methods requiring long stabilization times[cite: 316, 319].
+**AC Field Mode** 
+The magnet is rotated continuously at a constant frequency, typically 1 Hz. A position detector is fed to the Reference-in of a ock-in amplifier, which is highly effective at filtering out DC offsets and noise. This can be done with either a DC current or a dual-AC method (AC current and AC field) for maximum noise rejection. This method takes longer, few minutes for one measurement, and is to be used for low mobility samples.
 
 ---
 
 ## Equations
 
-The paper presents the following equations to describe the physical principles:
+The main physical equation for a material under the influence of a magnetic field is :
 
-1.  [cite_start]**General Electric Field Equation**: The electric field ($\vec{E}$) in a material under the influence of a magnetic field is given by[cite: 50]:
-    $$ \vec{E} = \rho_{\perp}\vec{j} + \vec{n}(\vec{j}\cdot\vec{n})(\rho_{||} - \rho_{\perp}) + \rho_{H}\vec{n}\times\vec{j} $$
+$$
+    \vec{E} = \rho_{\perp}\vec{j} + \vec{n}(\vec{j}\cdot\vec{n})(\rho_{||} - \rho_{\perp}) + \rho_{H}\vec{n}\times\vec{j} 
+$$
 
-2.  [cite_start]**Measured Hall Voltage**: For an isotropic sample, the measured voltage ($V_H$) across the Hall contacts is dependent on the orientation of the magnetic field[cite: 57]:
-    $$ V_{H} = \frac{\mu_{H}\rho}{d}IB\cos\psi + \frac{C\mu_{H}^{2}\rho}{2d}IB^{2}\sin(2\varphi)\sin^{2}\psi $$
+**Measured Hall Voltage** 
+For an isotropic sample, the measured voltage ($V_H$) across the Hall contacts is dependent on the orientation of the magnetic field:
 
-3.  [cite_start]**AC/AC Measurement Inputs**: In the AC field/AC current mode, the current ($I$) and magnetic field ($H$) are described as sinusoidal functions[cite: 266]:
+$$
+V_{H} = \frac{\mu_{H}\rho}{d}IB\cos\psi + \frac{C\mu_{H}^{2}\rho}{2d}IB^{2}\sin(2\varphi)\sin^{2}\psi
+$$
+
+**AC/AC Measurement Inputs**
+
+In the AC field/AC current mode, the current ($I$) and magnetic field ($H$) are described as sinusoidal functions:
+
     $$ I = I_{0}\cos(\omega_{1}t + \varphi); \quad H = H_{0}\cos(\omega_{2}t) $$
 
 4.  [cite_start]**Resultant Hall Voltage in AC/AC Mode**: The product of the AC current and AC field results in a Hall voltage ($V_H$) with sum and difference frequency components[cite: 269]:
