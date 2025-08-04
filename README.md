@@ -1,6 +1,6 @@
 # HT-Halbach
 
-This program is used for the measurement of Hall effect at high temperature and it was written in 2013-2014, the version described here was updated in 2023. The method is extensively described in a paper by Murat Gunes et al., published in *Measurement Science and Technology* (2017). For more details the reader can consult that article.
+This program is used for the measurement of Hall effect at high temperature and it was written in 2013-2014, the version described here was updated in 2023. The method is extensively described in the paper  [A versatile system for Hall effect measurements at high temperature](https://iopscience.iop.org/article/10.1088/1361-6501/aa7fe1), by M. Gunes, H. Sato, L. Pinsard-Gaudart, D. Berardan and N. Dragoe, Measurement Science and Technology, 28, 105905 (2017).
 
 ---
 
@@ -87,3 +87,8 @@ The key difference between the modes is how the magnetic field is applied and ho
 * **Principle**: The magnet rotates continuously at a constant frequency (e.g., 0.5-2 Hz), producing a sinusoidal AC magnetic field.
 * **Signal Extraction**: This mode relies on a lock-in amplifier that uses the magnet's rotation as its reference frequency. The lock-in amplifier isolates this signal, rejecting DC offsets.
 * **Key Advantage**: The primary benefit is superior rejection of parasitic DC offset voltages, which is crucial for measuring low-mobility samples with very small Hall signals.
+
+  ---
+## Notes for users in the lab
+A standard sample mounted in a RT sample holder is available, do not dismount that sample! 
+It is a 0.175 mm thick single side polished, p-type, Ga doped Germanium crystal with a stated nominal resistivity of 10 to 50 mOhm cm. It's measured resistivity with Keithley source 6220 and 2182 nanovoltmeter in delta mode gave 12.4 mOhm cm at 22°C. This corresponds to $7.63 \times 10^{-8 }\ \Omega \cdot \text{cm/Gauss}$, or $8.17 \times 10^{17} \ \text{cm}^{-3}$ (ref D. B. Cuttriss  the Bell System Technical Journal, vol 40, page 502, 1961). Use this sample as a reference for checking software, cables and instruments. 
