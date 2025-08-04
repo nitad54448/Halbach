@@ -6,15 +6,15 @@ This program is used for the measurement of Hall effect at high temperature and 
 
 ## Overview and Principle of Operation
 
-The system is designed to overcome common challenges in high-temperature Hall effect measurements, such as thermal gradients and thermoelectric voltages. The key point of this system, which is used in my lab nowadays, is the use of a rotating permanent NdFeB **Halbach magnet array** which allows for measurements under various conditions. For this setup, we employ a lab-made furnace inserted in a sample holder maintained under vacuum, heated internally, and inserted in "donut" of the magnet. Our setup has holder of 28 mm diameter; obviously larger bores will be more comfortable to work with but will be more much expensive.
+The system is designed to overcome common challenges in high-temperature Hall effect measurements, such as thermal gradients and thermoelectric voltages. The key point of this system, which is used in my lab nowadays, is the use of a rotating permanent NdFeB **Halbach magnet array** which allows for measurements under various conditions. For this setup, we employ a lab-made furnace inserted in a sample holder maintained under vacuum, heated internally, and inserted in "donut" of the magnet. The sample is mounted on a holder that can be heated up to 773 K. Our setup has holder of 28 mm diameter; obviously larger bores will be more comfortable to work with but will be more much expensive.
 
-This magnet is mounted on a motorized stage (Owis Gmbh), allowing it to be rotated at controlled speeds (up to ~2 Hz) or fixed at specific angles. This rotation enables the application of either a DC or an AC magnetic field to the sample. The sample is mounted on a holder that can be heated up to 773 K and is placed within the magnet's bore. The system supports multiple measurement modes by combining DC or AC magnetic fields with either DC or AC electrical currents.
+This magnet is mounted on a motorized stage (Owis Gmbh), allowing it to be rotated at controlled speeds (up to ~2 Hz) or fixed at specific angles. This rotation enables the application of either a DC or an AC magnetic field to the sample. The system supports multiple measurement modes by combining DC or AC magnetic fields with either DC or AC electrical currents.
 
 **DC Field Mode** 
 The magnet is rotated to a series of fixed angles. The Hall voltage shows a cosine dependence on the angle between the magnetic field and the sample normal. By fitting the measured voltage against the cosine of the angle, the Hall coefficient is extracted from the slope. This method is very fast, with a full set of measurements taking few tens of seconds.
 
 **AC Field Mode** 
-The magnet is rotated continuously at a constant frequency, typically 1 Hz. A position detector is fed to the Reference-in of a ock-in amplifier, which is highly effective at filtering out DC offsets and noise. This can be done with either a DC current or a dual-AC method (AC current and AC field) for maximum noise rejection. This method takes longer, few minutes for one measurement, and is to be used for low mobility samples.
+The magnet is rotated continuously at a constant frequency, typically 1 Hz. A position detector is fed to the Reference-in of a lock-in amplifier, which is highly effective at filtering out DC offsets and noise. This can be done with either a DC current or a dual-AC method (AC current and AC field) for maximum noise rejection. This method takes longer, few minutes for one measurement, and is to be used for low mobility samples.
 
 ---
 
@@ -37,50 +37,53 @@ $$
 
 In the AC field/AC current mode, the current ($I$) and magnetic field ($H$) are described as sinusoidal functions:
 
-    $$ I = I_{0}\cos(\omega_{1}t + \varphi); \quad H = H_{0}\cos(\omega_{2}t) $$
+$$ I = I_{0}\cos(\omega_{1}t + \varphi); \quad H = H_{0}\cos(\omega_{2}t) $$
 
-4.  [cite_start]**Resultant Hall Voltage in AC/AC Mode**: The product of the AC current and AC field results in a Hall voltage ($V_H$) with sum and difference frequency components[cite: 269]:
-    $$ V_{H} = \frac{R_H}{2d}I_{0}H_{0}\{\cos[(\omega_{1} - \omega_{2})t + \varphi] + \cos[(\omega_{1} + \omega_{2})t + \varphi]\} $$
+The product of the AC current and AC field results in a Hall voltage ($V_H$) with sum and difference frequency components:
 
-5.  [cite_start]**Hall Coefficient Calculation**: The Hall coefficient ($R_H$) can be calculated from the measured Hall voltage ($V_H$)[cite: 272]:
-    $$ R_{H} = \frac{2d V_{H}}{IH} $$
+$$ V_{H} = \frac{R_H}{2d}I_{0}H_{0}\{\cos[(\omega_{1} - \omega_{2})t + \varphi] + \cos[(\omega_{1} + \omega_{2})t + \varphi]\} $$
+
+The Hall coefficient ($R_H$) can be calculated from the measured Hall voltage ($V_H$)
+
+$$ R_{H} = \frac{2d V_{H}}{IH} $$
+
+This method is not used in the last version of the program.
 
 ---
 
-## Detailed Analysis
+The system has been extensively tested and used in the last 10 years. The only problem we have is the frequent break of the high temperature heater, probably from a poor design. Some commercial instruments are available.
 
-### Typical Experimental Results 🧪
+### Computer program
+The program available here is very specific, so unless you have an Owis motor, the same current sources (Keithely 6220 or 6221) and Lock-in amplifier, it is not that useful.
 
-The paper validates the system by testing a range of materials, demonstrating its accuracy and versatility.
+Examples of measurements are given below.
 
 * **Platinum (Pt) Film**
-    * [cite_start]At room temperature, the system measured an average Hall coefficient of $-0.21 \times 10^{-12} \, \Omega \cdot \text{cm/Gauss}$, which is consistent with reported literature values[cite: 185].
-    * [cite_start]It successfully extracted a tiny Hall signal (on the order of $5 \times 10^{-8}$ V) from a much larger offset voltage ($>7.7 \times 10^{-6}$ V), showcasing its sensitivity[cite: 182].
-    * [cite_start]The measurements proved to be highly stable over a 48-hour period[cite: 182].
+    * At room temperature, the system measured an average Hall coefficient of $-0.21 \times 10^{-12} \ \Omega \cdot \text{cm/Gauss}$, which is consistent with reported literature values.
+    * It successfully extracted a tiny Hall signal (on the order of $5 \times 10^{-8}$ V) from a much larger offset voltage ($>7.7 \times 10^{-6}$ V), showcasing its sensitivity.
+    * The measurements proved to be highly stable over a 48-hour period.
 
 * **Germanium (Ge) Single Crystal**
-    * [cite_start]A p-type Ge crystal was tested using all six measurement modes, with all configurations yielding consistent results around $1.9 \times 10^{-5} \, \Omega \cdot \text{cm/Gauss}$[cite: 287, 290].
-    * [cite_start]During a high-temperature measurement from 300 K to 625 K, data points were acquired every 5 seconds while the temperature was ramped continuously[cite: 318, 319].
-    * [cite_start]The results clearly showed the material's transition from p-type to intrinsic (n-type dominant) behavior at higher temperatures[cite: 312, 317].
+    * A p-type Ge crystal was tested using all six measurement modes, with all configurations yielding consistent results around $1.9 \times 10^{-5} \  \Omega \cdot \text{cm/Gauss}$.
+    * During a high-temperature measurement from 300 K to 625 K, data points were acquired every 5 seconds while the temperature was ramped continuously.
+    * The results clearly showed the material's transition from p-type to intrinsic (n-type dominant) behavior at higher temperatures.
 
 * **BiCuSeO (Thermoelectric Material)**
-    * [cite_start]The system was used to measure this challenging low-mobility material, where the offset voltage ($10^{-5}$ V) was about 100 times larger than the Hall signal ($10^{-7}$ V)[cite: 382, 383].
-    * [cite_start]The room temperature carrier concentration of $2 \times 10^{21} \, \text{cm}^{-3}$ matched results from a commercial system[cite: 381].
-    * [cite_start]High-temperature measurements showed the carrier concentration increasing up to $2.6 \times 10^{21} \, \text{cm}^{-3}$ at 650 K[cite: 384].
+    * The system was used to measure this challenging low-mobility material, where the offset voltage ($10^{-5}$ V) was about 100 times larger than the Hall signal ($10^{-7}$ V).
+    * The room temperature carrier concentration of $2 \times 10^{21} \, \text{cm}^{-3}$ matched results from a commercial system that uses a 9T magnet.
+    * High-temperature measurements showed the carrier concentration increasing up to $2.6 \times 10^{21} \, \text{cm}^{-3}$ at 650 K.
 
-### Comparison of AC and DC Field Modes 🔄
+### Comparison of AC and DC Field Modes 
 
 The key difference between the modes is how the magnetic field is applied and how the signal is detected.
 
 #### **DC Field Mode**
-* [cite_start]**Principle**: The magnet is moved to a series of fixed angular positions, and a measurement is taken at each static point[cite: 176].
-* [cite_start]**Signal Extraction**: The Hall constant is determined from the slope of a line when plotting the measured Hall voltage against the cosine of the angle ($\psi$)[cite: 177].
-* [cite_start]**Current**: Can be used with either a DC current or an AC current paired with a lock-in amplifier[cite: 183]. [cite_start]The paper reports no significant difference between the two current methods in this mode[cite: 184].
-* [cite_start]**Speed**: This method is very fast, with a full measurement taking just a few seconds[cite: 178]. [cite_start]A "scan" variant, where the magnet rotates slowly (0.2-0.5 Hz), offers a continuous alternative[cite: 248, 251].
+* **Principle**: The magnet is moved to a series of fixed angular positions, selected by the user, and a measurement is taken at each static point.
+* **Signal Extraction**: The Hall constant is determined from the slope of a line when plotting the measured Hall voltage against the cosine of the angle ($\psi$).
+* **Current**: In this version this method can be used with a DC current.
+
 
 #### **AC Field Mode**
-* [cite_start]**Principle**: The magnet rotates continuously at a constant frequency (e.g., 1-2 Hz), producing a sinusoidal AC magnetic field[cite: 260, 281].
-* [cite_start]**Signal Extraction**: This mode relies on a lock-in amplifier that uses the magnet's rotation as its reference frequency[cite: 164, 284].
-    * **AC Field / DC Current**: A DC current results in an AC Hall voltage at the magnet's rotation frequency. [cite_start]The lock-in amplifier isolates this signal, rejecting DC offsets[cite: 283, 286].
-    * [cite_start]**AC Field / AC Current**: In this dual-AC method, an AC current (at $\omega_1$) and AC field (at $\omega_2$) produce a Hall voltage at the sum ($\omega_1 + \omega_2$) and difference ($\omega_1 - \omega_2$) frequencies[cite: 263]. [cite_start]Measuring at these sideband frequencies provides excellent noise and offset rejection[cite: 270].
-* [cite_start]**Key Advantage**: The primary benefit is superior rejection of parasitic DC offset voltages, which is crucial for measuring low-mobility samples with very small Hall signals[cite: 61, 286].
+* **Principle**: The magnet rotates continuously at a constant frequency (e.g., 0.5-2 Hz), producing a sinusoidal AC magnetic field.
+* **Signal Extraction**: This mode relies on a lock-in amplifier that uses the magnet's rotation as its reference frequency. The lock-in amplifier isolates this signal, rejecting DC offsets.
+* **Key Advantage**: The primary benefit is superior rejection of parasitic DC offset voltages, which is crucial for measuring low-mobility samples with very small Hall signals.
